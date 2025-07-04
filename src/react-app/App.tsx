@@ -1,7 +1,9 @@
+import Navbar from "./components/navbar/navbar";
+
 function App() {
   return (
     <>
-      <h4>Hej niller</h4>
+      <Navbar />
     </>
   );
 }
