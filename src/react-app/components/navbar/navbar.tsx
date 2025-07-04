@@ -1,16 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import "./Navbar.css";
+import "./navbar.css";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navLinks = [
+  type NavLink = { name: string; href: string };
+  const navLinks: NavLink[] = [
     { name: "Træningstider", href: "#Træningstider" },
     { name: "Lokation", href: "#Lokation" },
     { name: "Om os", href: "#OmOs" },
     { name: "Kontakt os", href: "#KontaktOplysninger" },
   ];
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
+  }, [isOpen]);
 
   return (
     <nav className="navbar">
@@ -26,7 +31,10 @@ export default function Navbar() {
           ))}
         </div>
         <div className="mobile-menu-button">
-          <button onClick={() => setIsOpen(!isOpen)}>
+          <button
+            aria-label={isOpen ? "Luk menu" : "Åbn menu"}
+            onClick={() => setIsOpen(!isOpen)}
+          >
             {isOpen ? <X /> : <Menu />}
           </button>
         </div>
@@ -35,7 +43,12 @@ export default function Navbar() {
       {isOpen && (
         <div className="mobile-menu">
           {navLinks.map((link) => (
-            <a key={link.name} href={link.href}>
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={() => setIsOpen(false)}
+              className="mobile-link"
+            >
               {link.name}
             </a>
           ))}
