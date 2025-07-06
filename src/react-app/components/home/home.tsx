@@ -20,7 +20,9 @@ function Home() {
         effektiv træning med mening? Vi tilbyder seriøs boksetræning med plads
         til både begyndere og øvede.
       </p>
-      <button className="home-button">Læs mere</button>
+      <button className="home-button">
+        <a href="#Træningstider">Læs mere</a>
+      </button>
     </div>
   );
 }

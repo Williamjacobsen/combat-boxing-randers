@@ -8,9 +8,7 @@ export default function Navbar() {
   type NavLink = { name: string; href: string };
   const navLinks: NavLink[] = [
     { name: "Træningstider", href: "#Træningstider" },
-    { name: "Lokation", href: "#Lokation" },
     { name: "Om os", href: "#OmOs" },
-    { name: "Kontakt os", href: "#KontaktOplysninger" },
   ];
 
   useEffect(() => {
